@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KREOVA AI — Creative AI Studio</title>
+<style>
+*{box-sizing:border-box}
+:root{
+  --bg:#f5f6f8;--card:#fff;--text:#15171a;--muted:#747980;
+  --line:#e6e8eb;--accent:#5b46e8
+}
+body{margin:0;background:var(--bg);color:var(--text);
+font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.top{
+height:68px;background:#fff;border-bottom:1px solid var(--line);display:flex;
+align-items:center;justify-content:space-between;padding:0 34px;position:sticky;top:0;z-index:20
+}
+.brand{display:flex;align-items:center;gap:12px;font-weight:850;letter-spacing:-.4px}
+.mark{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
+background:linear-gradient(135deg,#111827,#7557ff);color:white;font-size:18px;box-shadow:0 7px 18px #0002}
+.brand small{display:block;font-size:10px;color:#92979e;font-weight:600;letter-spacing:.4px}
+.topright{display:flex;gap:9px}
+.btn{border:1px solid var(--line);background:#fff;padding:9px 13px;border-radius:10px;font-weight:650;cursor:pointer}
+.btn.primary{background:#17181b;color:#fff;border-color:#17181b}
+.wrap{max-width:1320px;margin:auto;padding:34px 30px 70px}
+.hero{display:flex;justify-content:space-between;gap:30px;align-items:center;margin:8px 0 30px}
+h1{font-size:36px;line-height:1.05;margin:0 0 10px;letter-spacing:-1.4px}
+.hero p{margin:0;color:var(--muted);max-width:650px;font-size:15px;line-height:1.55}
+.heroBadge{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px 18px;min-width:220px}
+.heroBadge b{font-size:20px}.heroBadge span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+.toolbar{display:flex;gap:12px;align-items:center;margin-bottom:24px}
+.search{flex:1;position:relative}
+.search input{width:100%;padding:13px 16px 13px 42px;border:1px solid var(--line);border-radius:12px;
+background:#fff;font:inherit;outline:none}
+.search span{position:absolute;left:15px;top:11px;font-size:18px}
+.filters{display:flex;gap:7px;flex-wrap:wrap}
+.filter{border:1px solid var(--line);background:#fff;border-radius:20px;padding:9px 13px;cursor:pointer;font-size:12px;font-weight:700}
+.filter.active{background:#17181b;color:#fff;border-color:#17181b}
+.sectionHead{display:flex;justify-content:space-between;align-items:end;margin:30px 0 14px}
+.sectionHead h2{font-size:18px;margin:0}.sectionHead p{font-size:12px;color:var(--muted);margin:4px 0 0}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;
+cursor:pointer;transition:.18s;box-shadow:0 2px 5px #00000008}
+.card:hover{transform:translateY(-4px);box-shadow:0 15px 35px #00000012}
+.cover{height:175px;position:relative;overflow:hidden;padding:17px;color:#fff}
+.cover:before,.cover:after{content:"";position:absolute;border-radius:50%;background:#ffffff22}
+.cover:before{width:170px;height:170px;right:-45px;top:-70px}.cover:after{width:100px;height:100px;left:-35px;bottom:-45px}
+.c1{background:linear-gradient(135deg,#111827,#4338ca)}
+.c2{background:linear-gradient(135deg,#111827,#0f766e)}
+.c3{background:linear-gradient(135deg,#431407,#c2410c)}
+.c4{background:linear-gradient(135deg,#1e1b4b,#7e22ce)}
+.c5{background:linear-gradient(135deg,#172554,#0369a1)}
+.c6{background:linear-gradient(135deg,#3f3f46,#18181b)}
+.c7{background:linear-gradient(135deg,#14532d,#15803d)}
+.c8{background:linear-gradient(135deg,#4c0519,#be123c)}
+.icon{font-size:42px;position:relative;z-index:2;filter:drop-shadow(0 5px 7px #0004)}
+.coverTitle{position:absolute;left:17px;bottom:16px;font-size:20px;font-weight:850;z-index:2;max-width:78%;letter-spacing:-.5px}
+.badge{position:absolute;right:14px;top:14px;z-index:3;background:#fff;color:#222;padding:6px 9px;border-radius:20px;font-size:10px;font-weight:800}
+.info{padding:14px 16px 16px}
+.name{font-size:15px;font-weight:800;margin-bottom:5px}.desc{font-size:12px;line-height:1.5;color:var(--muted);min-height:36px}
+.open{margin-top:13px;font-size:12px;font-weight:800;color:#5142c8}
+.empty{display:none;grid-column:1/-1;text-align:center;padding:60px;color:var(--muted)}
+footer{text-align:center;color:#a0a4a9;font-size:11px;margin-top:48px}
+@media(max-width:1050px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:780px){
+.top{padding:0 15px}.wrap{padding:25px 15px}.hero{align-items:start;flex-direction:column}
+.heroBadge{width:100%}.toolbar{align-items:stretch;flex-direction:column}.grid{grid-template-columns:repeat(2,1fr)}
+.topright .btn:first-child{display:none}
+}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.cover{height:190px}h1{font-size:30px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="mark">K</div>
+    <div>KREOVA AI<small>CREATIVE AI STUDIO</small></div>
+  </div>
+  <div class="topright">
+    <button class="btn" onclick="alert('Pengaturan akan kita buat setelah struktur aplikasi utama selesai.')">⚙️ Pengaturan</button>
+    <button class="btn primary" onclick="alert('Pilih salah satu aplikasi di bawah untuk mulai.')">＋ Buat Baru</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <h1>Semua ide kreatif,<br>di satu tempat.</h1>
+      <p>KREOVA AI adalah pusat berbagai tools AI untuk desain, foto, video, iklan, konten, dan produksi kreatif.</p>
+    </div>
+    <div class="heroBadge"><b>8 Tools</b><span>Creative workspace</span></div>
+  </section>
+
+  <div class="toolbar">
+    <div class="search"><span>⌕</span><input id="search" placeholder="Cari aplikasi..." oninput="render()"></div>
+    <div class="filters">
+      <button class="filter active" data-cat="Semua">Semua</button>
+      <button class="filter" data-cat="Foto">📷 Foto</button>
+      <button class="filter" data-cat="Video">🎬 Video</button>
+      <button class="filter" data-cat="Desain">🎨 Desain</button>
+      <button class="filter" data-cat="Konten">📱 Konten</button>
+    </div>
+  </div>
+
+  <div class="sectionHead">
+    <div><h2>✨ Aplikasi KREOVA AI</h2><p>Pilih tool yang ingin digunakan.</p></div>
+  </div>
+
+  <section class="grid" id="grid"></section>
+  <div class="empty" id="empty">Tidak ada aplikasi yang cocok.</div>
+  <footer>KREOVA AI • Creative AI Studio</footer>
+</main>
+
+<script>
+const apps=[
+{name:"Photo Resizer & Renamer",cat:["Foto","Desain"],emoji:"📷",cover:"c1",tag:"NEW",
+desc:"Ubah ukuran foto untuk TikTok, Instagram, Facebook, Pinterest dan rename otomatis."},
+{name:"AI Commercial Ads",cat:["Video","Konten"],emoji:"🔥",cover:"c2",tag:"AI",
+desc:"Buat konsep iklan, storyboard, scene dan prompt video dari produk atau jasa."},
+{name:"AI Storyboard Generator",cat:["Video","Konten"],emoji:"🎬",cover:"c3",tag:"AI",
+desc:"Bangun cerita video lengkap dengan scene, kamera, dialog dan visual."},
+{name:"Character Sheet Generator",cat:["Desain"],emoji:"🧑‍🎨",cover:"c4",tag:"AI",
+desc:"Buat character sheet konsisten berdasarkan foto dan data karakter."},
+{name:"AI Realistic Cinematic",cat:["Video"],emoji:"🎥",cover:"c5",tag:"AI",
+desc:"Generator konsep cinematic untuk menghasilkan visual perjalanan yang imersif."},
+{name:"AI Product Catalog",cat:["Desain","Foto"],emoji:"🛍️",cover:"c6",tag:"AI",
+desc:"Buat visual katalog produk dengan latar, layout dan informasi produk."},
+{name:"AI Image Studio",cat:["Foto","Desain"],emoji:"✨",cover:"c7",tag:"AI",
+desc:"Workspace untuk membuat, mengolah dan mempersiapkan gambar kreatif."},
+{name:"Social Content Studio",cat:["Konten","Foto","Video"],emoji:"📱",cover:"c8",tag:"PRO",
+desc:"Resize, rename, caption, hashtag, musik, durasi dan jadwal konten sosial."}
+];
+let active="Semua";
+document.querySelectorAll(".filter").forEach(b=>b.onclick=()=>{
+document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));
+b.classList.add("active");active=b.dataset.cat;render();
+});
+function render(){
+let q=document.getElementById("search").value.toLowerCase();
+let list=apps.filter(a=>(active==="Semua"||a.cat.includes(active))&&(a.name.toLowerCase().includes(q)||a.desc.toLowerCase().includes(q)));
+document.getElementById("grid").innerHTML=list.map(a=>`
+<article class="card" onclick="openApp('${a.name.replace(/'/g,"\\'")}')">
+<div class="cover ${a.cover}"><div class="icon">${a.emoji}</div><div class="badge">${a.tag}</div><div class="coverTitle">${a.name}</div></div>
+<div class="info"><div class="name">${a.name}</div><div class="desc">${a.desc}</div><div class="open">Buka aplikasi →</div></div>
+</article>`).join("");
+document.getElementById("empty").style.display=list.length?"none":"block";
+}
+function openApp(n){alert("Aplikasi: "+n+"\\n\\nBerikutnya kita sambungkan kartu ini ke halaman aplikasinya.");}
+render();
+</script>
+</body>
+</html>
